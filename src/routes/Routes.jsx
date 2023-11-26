@@ -53,7 +53,7 @@ const Routes = createBrowserRouter([
             {
                 path:'update-pet/:id',
                 element:<UpdatePet/>,
-                loader: ({params}) => fetch(`http://localhost:5000/petitem/${params.id}`)
+                loader: ({params}) => fetch(`https://pet-adoption-server-rho.vercel.app/petitem/${params.id}`)
             },
             //admin routes
             {
