@@ -41,13 +41,13 @@ const Routes = createBrowserRouter([
             {
                 path: "/pet-category/:cname",
                 element:<SinglePet/>,
-                loader: ({params})=> fetch(`http://localhost:5000/petcategory/${params.cname}`)
+                loader: ({params})=> fetch(`https://pet-adoption-server-rho.vercel.app/petcategory/${params.cname}`)
                 
             },
             {
                 path: "/pet-details/:id",
                 element:<PetDetails/>,
-                loader: ({params})=> fetch(`http://localhost:5000/pet-details/${params.id}`)
+                loader: ({params})=> fetch(`https://pet-adoption-server-rho.vercel.app/pet-details/${params.id}`)
                 
             }
         ]
@@ -67,7 +67,7 @@ const Routes = createBrowserRouter([
             {
                 path:'update-pet/:id',
                 element:<UpdatePet/>,
-                loader: ({params}) => fetch(`http://localhost:5000/petitem/${params.id}`)
+                loader: ({params}) => fetch(`https://pet-adoption-server-rho.vercel.app/petitem/${params.id}`)
             },
             //admin routes
             {
