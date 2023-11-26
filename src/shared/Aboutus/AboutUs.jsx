@@ -28,9 +28,9 @@ const AboutUs = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Typography variant="h6">2. Submit an Application</Typography>
+              <Typography variant="h6">2. Request Adoption</Typography>
               <Typography variant="body2">
-                When you find a pet you love, submit an adoption application to start the
+                When you find a pet you love, Request an adoption to start the
                 process.
               </Typography>
             </Grid>
