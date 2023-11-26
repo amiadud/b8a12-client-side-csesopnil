@@ -76,17 +76,17 @@ const Addpet = () => {
   }
   
   
-  // axiosSecure.post('/petitem', PetData)
-  //           .then(res => {
+  axiosSecure.post('/petitem', PetData)
+            .then(res => {
                 
-  //               console.log(res.data);
-  //              if(res.data.insertedId){
-  //               Swal.fire({
-  //                   title: "Your Item Added successfully!",
-  //                   icon: "success"
-  //                 });
-  //              }
-  //           })
+                console.log(res.data);
+               if(res.data.insertedId){
+                Swal.fire({
+                    title: "Your Item Added successfully!",
+                    icon: "success"
+                  });
+               }
+            })
   }
   };
 
