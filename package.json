@@ -10,13 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@material-ui/core": "^4.12.4",
-    "@material-ui/icons": "^4.11.3",
-    "@mui/material": "^5.14.18",
     "@tanstack/react-query": "^5.8.6",
     "@tanstack/react-table": "^8.10.7",
-    "@types/material-ui": "^0.21.14",
     "axios": "^1.6.2",
     "firebase": "^10.6.0",
     "flowbite": "^2.2.0",
