@@ -12,6 +12,8 @@ import Dashboard from '../Layout/Dashboard';
 import TestTable from '../TestTable';
 import UpdatePet from '../components/Pet/UpdatePet/UpdatePet';
 import AllUser from '../pages/Dashboard/AllUsers/AllUser';
+import SinglePet from '../components/Pet/SinglePet/SinglePet';
+import PetDetails from '../components/Pet/PetDetails/PetDetails';
 
 const Routes = createBrowserRouter([
 
@@ -35,6 +37,18 @@ const Routes = createBrowserRouter([
             {
                 path: "/pet-list",
                 element:<div>pet-list</div>
+            },
+            {
+                path: "/pet-category/:cname",
+                element:<SinglePet/>,
+                loader: ({params})=> fetch(`http://localhost:5000/petcategory/${params.cname}`)
+                
+            },
+            {
+                path: "/pet-details/:id",
+                element:<PetDetails/>,
+                loader: ({params})=> fetch(`http://localhost:5000/pet-details/${params.id}`)
+                
             }
         ]
     },
@@ -53,7 +67,7 @@ const Routes = createBrowserRouter([
             {
                 path:'update-pet/:id',
                 element:<UpdatePet/>,
-                loader: ({params}) => fetch(`https://pet-adoption-server-rho.vercel.app/petitem/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/petitem/${params.id}`)
             },
             //admin routes
             {
