@@ -6,7 +6,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
-import './header.css'
 
 const Header = () => {
 
