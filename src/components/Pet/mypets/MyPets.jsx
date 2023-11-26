@@ -68,7 +68,7 @@ import usePet from "../../../hooks/usePet";
       }),
     ];
     const [data] = useState(() => [...petData]);
-  
+    refetch();
     const table = useReactTable({
 
       data,
@@ -82,7 +82,7 @@ import usePet from "../../../hooks/usePet";
       onSortingChange: setSorting,
       getPaginationRowModel: getPaginationRowModel(),
     });
-    refetch();
+
     return (
 
         <>

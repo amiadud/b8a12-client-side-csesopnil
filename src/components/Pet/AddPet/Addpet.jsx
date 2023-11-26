@@ -12,10 +12,13 @@ import Select from 'react-select'
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Addpet = () => {
 
+
+  const {user} = useAuth();
   const axiosOpen = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
@@ -72,6 +75,7 @@ const Addpet = () => {
       longDescription: values.longDescription,
       shortDescription: values.shortDescription,
       petCategory: values.petCategory.value,
+      email: user.email,
       adopted: false
   }
   
@@ -82,9 +86,11 @@ const Addpet = () => {
                 console.log(res.data);
                if(res.data.insertedId){
                 Swal.fire({
-                    title: "Your Item Added successfully!",
-                    icon: "success"
-                  });
+                  icon: "success",
+                  title: "Your Pet has been saved",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
                }
             })
   }
