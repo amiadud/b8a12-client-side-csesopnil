@@ -1,28 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(4),
-    backgroundColor: theme.palette.primary.light,
-    textAlign: 'center',
-  },
-  card: {
-    maxWidth: 400,
-    margin: 'auto',
-    marginBottom: theme.spacing(3),
-  },
-  media: {
-    height: 200,
-  },
-}));
+import { Card,  CardContent, CardMedia, Grid, Typography } from '@mui/material';
 
 const Banner2 = () => {
-  const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div >
       <Typography className='text-white' variant="h4" gutterBottom>
         Give a Pet a Better Life!
       </Typography>
@@ -33,12 +15,8 @@ const Banner2 = () => {
       <Grid container spacing={3} justify="center">
         {/* Inspirational Images and Text Cards */}
         <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image="https://i.ibb.co/fFtfhJz/inspire.jpg"
-              title="Inspirational Image"
-            />
+          <Card >
+            <img src="https://i.ibb.co/fFtfhJz/inspire.jpg" alt="" />
             <CardContent>
               <Typography variant="h6" component="div" gutterBottom>
                 Inspire
@@ -51,12 +29,8 @@ const Banner2 = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image="https://imgdb.net/storage/uploads/b75b8435bb118af13a43fb13a9a87b38e4f1cf654f041d6ed11d13b9a5d156f4.jpg"
-              title="Inspirational Image 2"
-            />
+          <Card >
+            <img src="https://imgdb.net/storage/uploads/b75b8435bb118af13a43fb13a9a87b38e4f1cf654f041d6ed11d13b9a5d156f4.jpg" alt="" />
             <CardContent>
               <Typography variant="h6" component="div" gutterBottom>
                 Adopt
@@ -69,12 +43,8 @@ const Banner2 = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image="https://i.ibb.co/sHJSw9R/Transform-pet.jpg"
-              title="Inspirational Image 3"
-            />
+          <Card >
+            <img src="https://i.ibb.co/sHJSw9R/Transform-pet.jpg" alt="" />
             <CardContent>
               <Typography variant="h6" component="div" gutterBottom>
                 Transform

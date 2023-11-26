@@ -1,34 +1,22 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography } from '@mui/material';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(4),
-    backgroundColor: theme.palette.background.default,
-    textAlign: 'center',
-  },
-  paper: {
-    padding: theme.spacing(3),
-  },
-}));
 
 const AboutUs = () => {
-  const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-        <Typography variant="h4" gutterBottom>
-          About Us
+    <div className='my-4'>
+        <Typography variant="h4"  align='center' gutterBottom>
+          <span >About Us</span>
         </Typography>
-        <Paper className={classes.paper}>
+        <Paper >
           <Typography variant="body1" paragraph>
             Welcome to our pet adoption platform! We are dedicated to connecting loving
             homes with pets in need. Our mission is to make the adoption process simple,
             enjoyable, and rewarding for both pets and adopters.
           </Typography>
           <div className='text-4xl'>
-          <Typography variant="h5" paragraph>
+          <Typography variant="h4" align='center' paragraph>
             How it works:
           </Typography>
           </div>
@@ -62,7 +50,7 @@ const AboutUs = () => {
             </Grid>
           </Grid>
           <div className='mt-5'>
-          <Typography  variant="h5" paragraph>
+          <Typography  variant="h4" align='center' paragraph>
             Why we created this website:
           </Typography>
           </div>
