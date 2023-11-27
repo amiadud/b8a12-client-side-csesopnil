@@ -13,9 +13,10 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
-const Addpet = () => {
+const UpdatePet = () => {
 
     const { petName, _id, image, petAge, petCategory, petLocation, shortDescription, longDescription } = useLoaderData()
     console.log(_id);
@@ -24,7 +25,7 @@ const Addpet = () => {
   const axiosOpen = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  const {data:result = []} = useQuery({
+  const {data:result = [], refetch} = useQuery({
     queryKey: ['pet-category'],
     queryFn: async() => {
         const res = await axiosOpen('/pet-category')
@@ -36,16 +37,16 @@ const Addpet = () => {
 
 
   const validationSchema = Yup.object({
-    petName: Yup.string().required('Pet Name is required'),
-    petAge: Yup.string().required('Pet Age is required'),
-    petImage: Yup.mixed().required('Pet Image is required'),
-    petLocation: Yup.string().required('Pet Location is required'),
+    petName: Yup.string(),
+    petAge: Yup.string(),
+    petImage: Yup.mixed(),
+    petLocation: Yup.string(),
     petCategory: Yup.object().shape({
       value: Yup.string(),
       label: Yup.string(),
     }),
-    longDescription: Yup.string().required('Long Description is required'),
-    shortDescription: Yup.string().required('Short Description is required'),
+    longDescription: Yup.string(),
+    shortDescription: Yup.string(),
   });
 
   const options = result.map((data) => {
@@ -55,8 +56,7 @@ const Addpet = () => {
    
 
   const onSubmit = async(values, options) => {
-    formik.resetForm();
-
+    refetch();
 
     console.log(values);
     const {petImage} = values;
@@ -109,6 +109,10 @@ const Addpet = () => {
   });
 
   return (
+    <>
+    <Helmet>
+      <title> {petName} {petCategory} Update Form | Pet Adoption</title>
+    </Helmet>
     <form onSubmit={formik.handleSubmit} className='space-y-3'>
 
         <div>
@@ -122,9 +126,6 @@ const Addpet = () => {
           onBlur={formik.handleBlur}
           value={formik.values.petName}
         />
-        {formik.touched.petName && formik.errors.petName ? (
-          <div className='text-red-500'>{formik.errors.petName}</div>
-        ) : null}
       </div>
 
       <div>
@@ -138,9 +139,6 @@ const Addpet = () => {
           onBlur={formik.handleBlur}
           value={formik.values.petAge}
         />
-        {formik.touched.petAge && formik.errors.petAge ? (
-          <div  className='text-red-500'>{formik.errors.petAge}</div>
-        ) : null}
       </div>
 
 
@@ -155,9 +153,6 @@ const Addpet = () => {
           onBlur={formik.handleBlur}
           value={formik.values.petLocation}
         />
-        {formik.touched.petLocation && formik.errors.petLocation ? (
-          <div  className='text-red-500'>{formik.errors.petLocation}</div>
-        ) : null}
       </div>
 
       <div>
@@ -173,9 +168,6 @@ const Addpet = () => {
           }
           onBlur={formik.handleBlur}
         />
-        {formik.touched.petCategory && formik.errors.petCategory && (
-          <div className='text-red-500'>{formik.errors.petCategory.label}</div>
-        )}
       </label>
       </div>
 
@@ -191,17 +183,11 @@ const Addpet = () => {
           onChange={(event) => formik.setFieldValue('petImage', event.currentTarget.files[0])}
           onBlur={formik.handleBlur}
         />
-        {formik.touched.petImage && formik.errors.petImage ? (
-          <div className='text-red-500'>{formik.errors.petImage}</div>
-        ) : null}
       </div>
 
       <div>
         <label htmlFor="longDescription">Long Description</label>
         <textarea className=' w-full mt-2 rounded' type="text" onChange={formik.handleChange} value={formik.values.longDescription} name="longDescription" id="longDescription" cols="30" rows="10"></textarea>
-        {formik.touched.longDescription && formik.errors.longDescription ? (
-          <div className='text-red-500'>{formik.errors.longDescription}</div>
-        ) : null}
       </div>
 
       <div>
@@ -214,9 +200,6 @@ const Addpet = () => {
           value={formik.values.shortDescription}
           onChange={formik.handleChange}
         />
-        {formik.touched.shortDescription && formik.errors.shortDescription ? (
-          <div className='text-red-500'>{formik.errors.shortDescription}</div>
-        ) : null}
       </div>
 
       {/* Repeat similar blocks for other fields */}
@@ -225,7 +208,8 @@ const Addpet = () => {
         <button className='bg-green-500 py-2 px-4 hover:bg-slate-600 text-white rounded-md my-3' type="submit">Update</button>
       </div>
     </form>
+    </>
   );
 };
 
-export default Addpet;
+export default UpdatePet;

@@ -12,41 +12,31 @@ import Paper from '@mui/material/Paper';
 import useUser from '../../../hooks/useUser';
 import { FaUsers } from "react-icons/fa";
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import usepetRequest from '../../../hooks/usepetRequest';
+import { Helmet } from 'react-helmet';
+  
+  const AdoptRequest = () => {
 
-
-const AllUser = () => {
-
-
-    const [users, refetch]= useUser();
     const axiosSecure = useAxiosSecure();
 
-    function createData(name, photo, email, role, action) {
-      return { name, email,photo, role, action };
-    }
-    console.log(users);
-    
+       // // make admin
 
-    // // make admin
+       const handleMakeAccept = (user) => {
+        axiosSecure.patch(`/adopt-request/${user._id}`)
+        .then(res => {
+          console.log(res.data);
+          if(res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Good job!",
+              icon: "success"
+            });
+          }
+        })
+     
+      }
 
-    const handleMakeAdmin = (user) => {
-      axiosSecure.patch(`users/admin/${user._id}`)
-      .then(res => {
-        console.log(res.data);
-        if(res.data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            title: "Good job!",
-            icon: "success"
-          });
-        }
-      })
-   
-    }
-
-    // delete users
-
-    const handleDeleteUser = (user) => {
-
+    const handleReject = (item) =>{
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -54,18 +44,17 @@ const AllUser = () => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes, Reject it!"
       }).then((result) => {
-        if (result.isConfirmed) {
-        
-        axiosSecure.delete(`/users/${user._id}`)
+        if (result.isConfirmed) { 
+        axiosSecure.delete(`/adopt-request/${item._id}`)
         .then(res => {
             console.log(res.data);
             if (res.data.deletedCount > 0) {
                 refetch();
                 Swal.fire({
-                    title: "Deleted!",
-                    text: "Your Cart has been deleted.",
+                    title: "Rejected!",
+                    text: "Request Reject and Removed Successful.",
                     icon: "success"
                   });
             }
@@ -73,53 +62,61 @@ const AllUser = () => {
 
         }
       });
-      
 
-    }    
+    }
 
-    
+  const [AdoptRequest, refetch] = usepetRequest()
 
     return (
+
+        <>
+        <Helmet>
+
+        </Helmet>
+
+
+
         <div>
          <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-          <TableCell className='border'>Profile Image </TableCell>
             
             <TableCell className='border'>Name </TableCell>
             <TableCell className='border' align="center">Email</TableCell>
-            <TableCell className='border' align="center">Role</TableCell>
-            <TableCell className='border' align="center">Action</TableCell>
+            <TableCell className='border' align="center">Phone</TableCell>
+            <TableCell className='border' align="center">Location</TableCell>
+            <TableCell className='border' align="center">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody >
-          {users.map((row) => (
+          {AdoptRequest.map((row) => (
 
             <TableRow
               key={row?._id}
  
             >
-              <TableCell className='border  ' align="left" width="20%" ><img  className=' w-16 rounded-full' src={row.photo} alt="" /></TableCell>
               <TableCell component="th" scope="row" width="20%">
                 {row.name}
               </TableCell>
              
              <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.email}</span></TableCell>
+             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.phone}</span></TableCell>
+             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.location}</span></TableCell>
               <TableCell className='border' align="center" width="10%">
                 {
-                  row.role ? "Admin" : <><button onClick={()=> handleMakeAdmin(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 btn my-3 hover:bg-gray-500 bg-blue-600 text-white hover:cursor-pointer '>Make Admin</button></>
+                  row.status ? "Accepted" : <><div className='flex gap-2 md:flex-row flex-col'><button onClick={()=> handleMakeAccept(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>Accpet</button> <button onClick={()=> handleReject(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-red-600 text-white hover:cursor-pointer '>Reject</button></div></>
                 }
 
               </TableCell>
-              <TableCell className='border' align="center" width="10%"><button onClick={()=> handleDeleteUser(row)}><MdDeleteForever className='text-3xl text-red-600' /></button></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
         </div>
+      </>
     );
-};
-
-export default AllUser;
+  };
+  
+  export default AdoptRequest;

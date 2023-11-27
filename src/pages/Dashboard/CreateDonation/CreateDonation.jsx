@@ -1,22 +1,18 @@
 import React from 'react';
 import { useFormik, Field } from 'formik';
 import * as Yup from 'yup';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const image_hosting_key = '0dc2a07f0d8d82d6024cfcd663e086fa'
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}` 
 console.log(image_hosting_key);
-
-
-import Select from 'react-select'
 import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
-import { Helmet } from 'react-helmet';
+import Swal from 'sweetalert2';
 
 
-const Addpet = () => {
+const CreateDonation = () => {
 
 
   const {user} = useAuth();
@@ -34,15 +30,13 @@ const Addpet = () => {
 
 
 
+
   const validationSchema = Yup.object({
     petName: Yup.string().required('Pet Name is required'),
-    petAge: Yup.string().required('Pet Age is required'),
     petImage: Yup.mixed().required('Pet Image is required'),
-    petLocation: Yup.string().required('Pet Location is required'),
-    petCategory: Yup.object().shape({
-      value: Yup.string(),
-      label: Yup.string(),
-    }),
+    maxDonation: Yup.string().required('Required Max Donation is required'),
+    DonateAmount:Yup.string().required('Required Max Donation is required'),
+    lastDate: Yup.date(),
     longDescription: Yup.string().required('Long Description is required'),
     shortDescription: Yup.string().required('Short Description is required'),
   });
@@ -50,8 +44,6 @@ const Addpet = () => {
   const options = result.map((data) => {
     return {value: data.pet_name, label: data.pet_name }
    })
-  
-   
 
   const onSubmit = async(values, options) => {
     formik.resetForm();
@@ -68,32 +60,30 @@ const Addpet = () => {
       }
   })
 
-  const currentDate = new Date();
-  const date = currentDate.toDateString();
+
 
   if (res.data.success){
     const PetData = {
       petName: values.petName,
-      petAge: parseInt(values.petAge),
-      petLocation: values.petLocation,
       image: res.data.data.display_url,
       longDescription: values.longDescription,
+      maxDonation: parseInt(values.maxDonation),
+      DonateAmount: parseInt(values.DonateAmount),
       shortDescription: values.shortDescription,
-      petCategory: values.petCategory.value,
+      lastDate: values.lastDate,
       email: user.email,
-      date: date,
-      adopted: false
   }
+  console.log(PetData);
   
   
-  axiosSecure.post('/petitem', PetData)
+  axiosSecure.post('/donation-campaign', PetData)
             .then(res => {
                 
                 console.log(res.data);
                if(res.data.insertedId){
                 Swal.fire({
                   icon: "success",
-                  title: "Your Pet has been saved",
+                  title: "Your Donation campaign Data has been saved",
                   showConfirmButton: false,
                   timer: 1500
                 });
@@ -105,28 +95,21 @@ const Addpet = () => {
   const formik = useFormik({
     initialValues: {
       petName: '',
-      petAge: '',
       petImage: null,
-      petLocation: '',
-      petCategory: null,
       longDescription: '',
+      maxDonation: '',
+      DonateAmount: '',
+      lastDate: '',
       shortDescription: '',
-      date: new Date(),
     },
     validationSchema: validationSchema,
     onSubmit: onSubmit,
   });
 
   return (
-    <>
-    <Helmet>
-      <title>
-        Add Pet Data || Pet Adoption
-      </title>
-    </Helmet>
     <form onSubmit={formik.handleSubmit} className='space-y-3 '>
-        <div >
-        <label htmlFor="petName">Pet Name:</label>
+         <div >
+        <label htmlFor="maxDonation">Pet Name:</label>
         <input
           type="text"
           id="petName"
@@ -140,59 +123,6 @@ const Addpet = () => {
           <div className='text-red-500'>{formik.errors.petName}</div>
         ) : null}
       </div>
-
-      <div>
-        <label htmlFor="petAge">Pet Age:</label>
-        <input
-          type="text"
-          id="petAge"
-          className='rounded w-full'
-          name="petAge"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.petAge}
-        />
-        {formik.touched.petAge && formik.errors.petAge ? (
-          <div  className='text-red-500'>{formik.errors.petAge}</div>
-        ) : null}
-      </div>
-
-
-       <div>
-        <label htmlFor="petLocation">Pet Location:</label>
-        <input
-          type="text"
-          id="petLocation"
-          className='rounded w-full'
-          name="petLocation"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.petLocation}
-        />
-        {formik.touched.petLocation && formik.errors.petLocation ? (
-          <div  className='text-red-500'>{formik.errors.petLocation}</div>
-        ) : null}
-      </div>
-
-      <div>
-      <label>
-      <label htmlFor="petCategory">Pet Category:</label>
-        <Select
-          options={options}
-          className='rounded w-full'
-          name="petCategory"
-          value={formik.values.petCategory}
-          onChange={(selectedOption) =>
-            formik.setFieldValue('petCategory', selectedOption)
-          }
-          onBlur={formik.handleBlur}
-        />
-        {formik.touched.petCategory && formik.errors.petCategory && (
-          <div className='text-red-500'>{formik.errors.petCategory.label}</div>
-        )}
-      </label>
-      </div>
-
       <div>
         <label htmlFor="petImage">Pet Image:</label>
         <input
@@ -208,6 +138,70 @@ const Addpet = () => {
           <div className='text-red-500'>{formik.errors.petImage}</div>
         ) : null}
       </div>
+        <div >
+        <label htmlFor="maxDonation">Maximum Donation Amount:</label>
+        <input
+          type="text"
+          id="maxDonation"
+          className='w-full'
+          name="maxDonation"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.maxDonation}
+        />
+        {formik.touched.maxDonation && formik.errors.maxDonation ? (
+          <div className='text-red-500'>{formik.errors.maxDonation}</div>
+        ) : null}
+      </div>
+      <div >
+        <label htmlFor="maxDonation"> Donated Amount:</label>
+        <input
+          type="text"
+          id="DonateAmount"
+          className='w-full'
+          name="DonateAmount"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.DonateAmount}
+        />
+        {formik.touched.DonateAmount && formik.errors.DonateAmount ? (
+          <div className='text-red-500'>{formik.errors.DonateAmount}</div>
+        ) : null}
+      </div>
+
+      <div>
+        <label htmlFor="petAge">Last Date of Donation:</label>
+        <input
+          type="date"
+          id="lastDate"
+          className='rounded w-full'
+          name="lastDate"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.lastDate}
+        />
+        {formik.touched.lastDate && formik.errors.lastDate ? (
+          <div  className='text-red-500'>{formik.errors.lastDate}</div>
+        ) : null}
+      </div>
+
+
+       <div>
+        <label htmlFor="petLocation">Short Description:</label>
+        <input
+          type="text"
+          id="shortDescription"
+          className='rounded w-full'
+          name="shortDescription"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.shortDescription}
+        />
+        {formik.touched.shortDescription && formik.errors.shortDescription ? (
+          <div  className='text-red-500'>{formik.errors.shortDescription}</div>
+        ) : null}
+      </div>
+
 
       <div>
         <label htmlFor="longDescription">Long Description</label>
@@ -217,29 +211,13 @@ const Addpet = () => {
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="shortDescription">Short Description:</label>
-        <input
-          type="text"
-          id="shortDescription"
-          className=' w-full rounded'
-          name="shortDescription"
-          value={formik.values.shortDescription}
-          onChange={formik.handleChange}
-        />
-        {formik.touched.shortDescription && formik.errors.shortDescription ? (
-          <div className='text-red-500'>{formik.errors.shortDescription}</div>
-        ) : null}
-      </div>
-
       {/* Repeat similar blocks for other fields */}
 
       <div>
         <button className='bg-green-500 py-2 px-4 hover:bg-slate-600 text-white rounded-md my-3' type="submit">Submit</button>
       </div>
     </form>
-    </>
   );
 };
 
-export default Addpet;
+export default CreateDonation;

@@ -6,9 +6,6 @@ import AuthProvider from './provider/AuthProvider.jsx'
 import Routes from './routes/Routes.jsx'
 
 import {
-    useQuery,
-    useMutation,
-    useQueryClient,
     QueryClient,
     QueryClientProvider,
   } from '@tanstack/react-query'

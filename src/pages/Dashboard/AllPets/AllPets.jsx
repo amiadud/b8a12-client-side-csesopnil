@@ -13,13 +13,14 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import {Helmet} from "react-helmet";
 import { Link } from "react-router-dom";
 import usePet from "../../../hooks/usePet";
+import useallpet from "../../../hooks/useallpet";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
   
-  const MyPets = () => {
+  const AllPets = () => {
 
     const axiosSecure = useAxiosSecure();
-
+    const [allpetdata, refetch] = useallpet();
 
     const handleDelete = (item) =>{
       console.log(item);
@@ -40,7 +41,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
                 refetch();
                 Swal.fire({
                     title: "Deleted!",
-                    text: "Your Pet has been deleted.",
+                    text: "Your Cart has been deleted.",
                     icon: "success"
                   });
             }
@@ -50,8 +51,23 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
       });
 
     }
+    const handleAdopt = (item) =>{
 
-  const [petData, refetch] = usePet()
+      axiosSecure.patch(`/petlist/${item}`)
+      .then(res => {
+        refetch()
+        console.log(res.data);
+        if(res.data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Pet Adopted",
+            icon: "success"
+          });
+        }
+      })
+    }
+
+  
+
     
     const [sorting, setSorting] = useState([])
     
@@ -89,18 +105,18 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
       }),
       columnHelper.accessor("adopted", {
         cell: (props) => {
-            return `${props.getValue() === true ? 'adopted' : "not adopted"  }`
+            return `${props.getValue() == true ? 'adopted' : "not adopted"  }`
         },
         header: "adopted status",
       }),
       columnHelper.accessor("_id", {
         cell: (props) => {
-          return <><div className="flex gap-3 md:flex-row flex-col "><Link className=" bg-green-500 hover:bg-green-600 rounded-lg px-3 py-3 " to={`/dashboard/update-pet/${props.getValue()}`}>Update</Link> <button className="bg-red-500 px-3 py-3 rounded-md hover:bg-red-600" onClick={()=> handleDelete(props.getValue())}>Delete</button> <button className="bg-blue-500 px-3 py-3 rounded-md hover:bg-blue-600" onClick={()=> handleDelete(props.getValue())}>Adopt</button> </div></>
+          return <><div className="flex gap-3 md:flex-row flex-col "><Link className=" bg-green-500 hover:bg-green-600 rounded-lg px-3 py-3 " to={`/dashboard/update-pet/${props.getValue()}`}>Update</Link> <button className="bg-red-500 px-3 py-3 rounded-md hover:bg-red-600" onClick={()=> handleDelete(props.getValue())}>Delete</button> <button className="bg-blue-500 px-3 py-3 rounded-md hover:bg-blue-600" onClick={()=> handleAdopt(props.getValue())}>Adopt</button> </div></>
       },
         header: "Action",
       }),
     ];
-    const [data] = useState(petData);
+    const [data] = useState(allpetdata);
   
     const table = useReactTable({
 
@@ -182,4 +198,4 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
     );
   };
   
-  export default MyPets;
+  export default AllPets;

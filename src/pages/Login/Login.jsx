@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { Button, TextField, Container, Typography, Box } from '@mui/material';
 import SocialLogin from './SocialLogin';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
+
+  const {userlogin} = useAuth();
+  const location = useLocation()
+  const navigate = useNavigate();
+
+  const from = location?.state?.from?.pathname || "/"
+
   // State to store form data
   const [formData, setFormData] = useState({
     email: '',
@@ -14,11 +23,22 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your login logic here using formData
-    console.log('Form submitted with data:', formData);
+    const email = formData.email
+    const password = formData.password
 
+    userlogin(email, password)
+        .then(result => {
+          console.log(result.user);
+          Swal.fire({
+            title: "User Login SuccessFull",
+            icon: "success"
+          });
+          navigate(from, {replace: true})
 
-
+        })
+        .catch(err => {
+          console.log(err.message);
+        })
 
   };
 

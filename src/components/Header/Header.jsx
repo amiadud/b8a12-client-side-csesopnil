@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'flowbite';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,6 +11,8 @@ import './style.css'
 
 const Header = () => {
 
+
+  const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -42,10 +44,10 @@ const Header = () => {
 
 <nav className="bg-white border-gray-200 dark:bg-gray-900">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-  <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+  <Link to={'/'} className="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://imgdb.net/storage/uploads/1b84490de33e95c4f3c8f73943e63cb73b74216111d346d36d379cd561df7f68.png" alt="Flowbite Logo" />
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-  </a>
+  </Link>
   <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
   <div>
       {
@@ -95,15 +97,12 @@ const Header = () => {
         <NavLink  to={'/pet-list'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pet Listing</NavLink>
       </li>
       <li>
-        <NavLink  to={'/donation-campaign'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Donation Campaigns</NavLink>
-      </li>
-      <li>
-        <NavLink to={'/add-pet'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Add Pet</NavLink>
+        <NavLink  to={'/donation-campaign-list'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Donation Campaigns</NavLink>
       </li>
       {
         user ? ""
       :<li>
-      <NavLink  to={'/login'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</NavLink>
+      <NavLink  to={'/login'} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login/register</NavLink>
     </li>
       }
     </ul>

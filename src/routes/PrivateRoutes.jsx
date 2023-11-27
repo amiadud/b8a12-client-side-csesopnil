@@ -3,6 +3,8 @@ import useAuth from '../hooks/useAuth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate, useLocation } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const PrivateRoutes = ({children}) => {
 
@@ -15,7 +17,9 @@ const PrivateRoutes = ({children}) => {
     }
     
     else if(loading){
-        return <span className="loading loading-spinner "></span>
+        return <Box sx={{ width: '100%' }}>
+        <LinearProgress />
+      </Box>
     }
 
 

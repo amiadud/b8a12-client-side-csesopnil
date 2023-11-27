@@ -26,9 +26,9 @@ const SinglePet = () => {
                 data.map( pets => 
                     
                     <div data-aos="zoom-in-up" className='border hover:shadow-none shadow-md rounded-md mt-4  '>
-                    <div className='hover:underline'>
+                    <div >
                     <Link to={`/pet-details/${pets?._id}/`}> <img className='scale-90 h-72 w-full transition-all mt-4' src={pets?.image} alt="" title="" /></Link>
-                    <Link to={`/pet-details/${pets?._id}/`}><h2 className='  dark:text-white text-center scale-90 text-xl font-semibold'>{pets?.petName}</h2></Link>
+                    <h2 className='  dark:text-white text-center scale-90 text-xl font-semibold'>{pets?.petName}</h2>
                     </div>
                  
                     <div>
@@ -39,7 +39,7 @@ const SinglePet = () => {
                     <div className='flex justify-center my-2 '>
                     </div>
                      <div className='flex flex-col md:flex-row gap-4  mb-5 mt-2 items-center justify-center'>
-                     <Link to={`/pet-details/${pets?._id}/`}> <button className='border hover:shadow capitalize rounded-md md:px-3  bg-violet-600 hover:bg-violet-800 dark:bg-slate-200 dark:text-black text-white'>Details</button></Link>
+                     <Link to={`/pet-details/${pets?._id}/`}> <button className='inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]'>Details</button></Link>
                      </div>
   </div>     
                     )

@@ -21,7 +21,8 @@ const SocialLogin = () => {
           console.log(res.user);
           const userInfo = {
               email: res.user?.email,
-              name: res.user?.displayName
+              name: res.user?.displayName,
+              photo: res.user?.photoURL
           }
           axiosOpen.post('/users', userInfo)
           .then(res => {
