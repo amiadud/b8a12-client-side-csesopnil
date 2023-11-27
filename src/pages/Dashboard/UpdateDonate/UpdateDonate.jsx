@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
 
 
-const UpdateDonateCampaign = () => {
+const UpdateDonate = () => {
 
 
 
@@ -187,4 +187,4 @@ const UpdateDonateCampaign = () => {
   );
 };
 
-export default UpdateDonateCampaign;
+export default UpdateDonate;

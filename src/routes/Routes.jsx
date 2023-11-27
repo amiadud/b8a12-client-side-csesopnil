@@ -24,7 +24,7 @@ import DonateCampaignDetails from '../pages/Dashboard/DonateCampaignDetails/Dona
 import Payments from '../pages/Dashboard/Payments/Payments';
 import MyDonation from '../pages/Dashboard/MyDonation/MyDonation';
 import AllDonation from '../pages/Dashboard/AllDonation/AllDonation';
-import UpdateDonateCampaign from '../pages/Dashboard/updateDonateCampaign/updateDonateCampaign';
+import UpdateDonate from '../pages/Dashboard/UpdateDonate/UpdateDonate';
 
 const Routes = createBrowserRouter([
 
@@ -111,7 +111,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "update-donation-campaign/:id",
-                element:<UpdateDonateCampaign/>,
+                element:<UpdateDonate/>,
                 loader: ({params}) => fetch(`https://pet-adoption-server-rho.vercel.app/campaign-detail/${params.id}`)
             },
             {
