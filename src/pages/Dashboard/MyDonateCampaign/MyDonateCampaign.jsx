@@ -13,7 +13,7 @@ import useUser from '../../../hooks/useUser';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Helmet } from 'react-helmet';
 import ProgressBar from "@ramonak/react-progress-bar";
-import useDonateCampaign from '../../../hooks/usedonateCampaign';
+import useDonateCampaign from '../../../hooks/useDonate';
 import {
   TERipple,
   TEModal,

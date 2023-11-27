@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 import useAuth from "./useAuth";
 
-const useDonateCampaign = () => {
+const useDonate = () => {
 
     // tan stack query
     const axiosOpen = useAxiosPublic ()
@@ -23,4 +23,4 @@ const useDonateCampaign = () => {
     return [donate_Campaign, refetch]
 };
 
-export default useDonateCampaign;
+export default useDonate;

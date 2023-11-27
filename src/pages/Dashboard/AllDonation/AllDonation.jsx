@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Helmet } from 'react-helmet';
 import ProgressBar from "@ramonak/react-progress-bar";
-import useDonateCampaign from '../../../hooks/usedonateCampaign';
+import useDonateCampaign from '../../../hooks/useDonate';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
