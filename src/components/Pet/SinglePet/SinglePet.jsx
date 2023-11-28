@@ -21,7 +21,7 @@ const SinglePet = () => {
                 <h2 className='text-3xl dark:text-white capitalize text-center my-3'> All {cname.cname} <span></span> </h2>
                 <hr />
             </div>
-            <div className='grid grid-cols-2 md:grid-cols-3 mx-2 lg:grid-cols-3 gap-2 my-4 '>
+            <div className='grid grid-cols-1 md:grid-cols-3 mx-2 lg:grid-cols-3 gap-2 my-4 '>
             {
                 data.map( pets => 
                     
