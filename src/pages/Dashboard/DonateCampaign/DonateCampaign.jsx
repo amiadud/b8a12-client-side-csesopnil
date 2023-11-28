@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useDonate from '../../../hooks/useDonate';
+import { Helmet } from 'react-helmet';
 
 const DonateCampaign = () => {
 
     const [donate_Campaign, refetch] = useDonate()
     refetch()
     return (
+        <>
+        <Helmet>
+            <title>Donation Campaigns </title>
+        </Helmet>
         <div className='grid grid-cols-1 md:grid-cols-2 mx-2 lg:grid-cols-3 gap-2 my-4 '>
+            
         {
             donate_Campaign.map(campaign => 
                 
@@ -31,6 +37,7 @@ const DonateCampaign = () => {
                 )
         }
      </div>
+     </>
     );
 };
 

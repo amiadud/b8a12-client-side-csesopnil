@@ -4,6 +4,7 @@ import SocialLogin from './SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 
 const Login = () => {
@@ -54,6 +55,11 @@ const Login = () => {
   };
 
   return (
+  
+    <>
+    <Helmet>
+      <title>Login | Pet Adoption</title>
+    </Helmet>
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -109,6 +115,7 @@ const Login = () => {
       <span className='dark:text-white'>Don't have an account?</span> <Link to={'/register'} className='font-semibold text-green-600'>Register</Link>
       <SocialLogin/>
     </Container>
+    </>
   );
 };
 

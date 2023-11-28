@@ -10,6 +10,7 @@ import { MdFormatListBulletedAdd, MdLightMode, MdDarkMode } from "react-icons/md
 import { FaClipboardList, FaDonate } from "react-icons/fa";
 import { FaSwatchbook } from "react-icons/fa6";
 import { useTheme } from '@emotion/react';
+import { Helmet } from 'react-helmet';
 
 
 const Dashboard = () => {
@@ -39,7 +40,13 @@ const Dashboard = () => {
 
     return (
         <>
-
+        <Helmet>
+         <title>
+            {
+               isAdmin ? 'Welcome to Admin Dashboard' : 'Welcome to user Dashboard'
+            }
+         </title>
+        </Helmet>
 <button data-drawer-target="sidebar-multi-level-sidebar" data-drawer-toggle="sidebar-multi-level-sidebar" aria-controls="sidebar-multi-level-sidebar" type="button" className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
    <span className="sr-only">Open sidebar</span>
    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

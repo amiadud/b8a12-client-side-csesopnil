@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const image_hosting_key = '0dc2a07f0d8d82d6024cfcd663e086fa'
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -86,6 +87,9 @@ const Register = () => {
 
     return (
         <>
+            <Helmet>
+      <title>User Registration | Pet Adoption</title>
+    </Helmet>
 <div className='max-w-7xl mx-auto'>
 <div className="h-full">
         {/* <!-- Left column container with background--> */}
