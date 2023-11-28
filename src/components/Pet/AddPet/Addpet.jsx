@@ -14,9 +14,12 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 
 const Addpet = () => {
+
+  const navigate = useNavigate();
 
 
   const {user} = useAuth();
@@ -88,7 +91,6 @@ const Addpet = () => {
   
   axiosSecure.post('/petitem', PetData)
             .then(res => {
-                
                 console.log(res.data);
                if(res.data.insertedId){
                 Swal.fire({
@@ -97,6 +99,7 @@ const Addpet = () => {
                   showConfirmButton: false,
                   timer: 1500
                 });
+                navigate('/dashboard/my-added-pets/')
                }
             })
   }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaLocationDot } from "react-icons/fa6";
-import { Link, useLoaderData } from 'react-router-dom/dist';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom/dist';
 import useAuth from '../../../hooks/useAuth';
 import {
     TERipple,
@@ -18,6 +18,7 @@ const PetDetails = () => {
 
   const [pets, setPets] = useState([]);
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
     const [showModal, setShowModal] = useState(false);
     const {user} = useAuth()
@@ -47,6 +48,7 @@ const PetDetails = () => {
               showConfirmButton: false,
               timer: 1500
             });
+            navigate('/dashboard/adopt-request/')
            }
         })
 

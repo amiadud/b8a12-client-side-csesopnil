@@ -42,8 +42,10 @@ import { useQuery } from '@tanstack/react-query';
         if(res.data.modifiedCount > 0) {
           refetch();
           Swal.fire({
-            title: "Good job!",
-            icon: "success"
+            title: "Pause Done!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
           });
         }
       })

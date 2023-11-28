@@ -10,7 +10,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 
 const UpdateDonate = () => {
@@ -23,6 +23,7 @@ const UpdateDonate = () => {
   const {user} = useAuth();
   const axiosOpen = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
 
 
   const validationSchema = Yup.object({
@@ -75,6 +76,7 @@ const UpdateDonate = () => {
                     title: "Your Donate Campaign Update successfully!",
                     icon: "success"
                   });
+                  navigate('/dashboard/my-donation-campaign/')
                }
             })
   }

@@ -31,6 +31,7 @@ const Login = () => {
           console.log(result.user);
           Swal.fire({
             title: "User Login SuccessFull",
+            showConfirmButton: false,
             icon: "success"
           });
           navigate(from, {replace: true})

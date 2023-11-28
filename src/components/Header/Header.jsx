@@ -30,7 +30,9 @@ const Header = () => {
       setTimeout(() => {
         Swal.fire({
           title: "Logout Success!",
-          icon: "success"
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500
         });
       }, 200);
       navigate('/login') 

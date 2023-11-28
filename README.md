@@ -1,8 +1,10 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features list
+1. A user can adopt any pet.
+2. An admin has the ability to delete, edit all data.
+3. You can donate any pet here if you want. for some time.
+4. Show a list of all the adoption request of the pets that the currently logged in user
+5. My added pets page logged in users can see all the pets they added.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+live link: https://my-pet-adoption.vercel.app/

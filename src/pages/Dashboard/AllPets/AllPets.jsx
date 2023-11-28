@@ -41,8 +41,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
                 refetch();
                 Swal.fire({
                     title: "Deleted!",
-                    text: "Your Cart has been deleted.",
-                    icon: "success"
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
                   });
             }
         })

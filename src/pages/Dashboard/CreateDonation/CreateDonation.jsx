@@ -10,9 +10,12 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 
 const CreateDonation = () => {
+  
+  const navigate = useNavigate();
 
 
   const {user} = useAuth();
@@ -87,6 +90,7 @@ const CreateDonation = () => {
                   showConfirmButton: false,
                   timer: 1500
                 });
+                navigate('/dashboard/my-donation-campaign/')
                }
             })
   }

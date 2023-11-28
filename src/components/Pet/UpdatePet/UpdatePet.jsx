@@ -86,7 +86,9 @@ const UpdatePet = () => {
                if(res.data){
                 Swal.fire({
                     title: "Your Pet Update successfully!",
-                    icon: "success"
+                    showConfirmButton: false,
+                    icon: "success",
+                    timer: 1500
                   });
                }
             })

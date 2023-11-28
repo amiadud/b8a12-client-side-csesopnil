@@ -41,7 +41,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your Pet has been deleted.",
-                    icon: "success"
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
                   });
             }
         })

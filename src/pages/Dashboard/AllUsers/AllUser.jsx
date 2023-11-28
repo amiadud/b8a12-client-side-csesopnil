@@ -35,13 +35,17 @@ const AllUser = () => {
         if(res.data.modifiedCount > 0) {
           refetch();
           Swal.fire({
-            title: "Good job!",
-            icon: "success"
+            title: "You are Admin!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
           });
         }
       })
    
     }
+
+
 
     // delete users
 
@@ -65,7 +69,7 @@ const AllUser = () => {
                 refetch();
                 Swal.fire({
                     title: "Deleted!",
-                    text: "Your Cart has been deleted.",
+                    text: "User has been deleted.",
                     icon: "success"
                   });
             }
