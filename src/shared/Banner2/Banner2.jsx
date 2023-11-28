@@ -4,7 +4,7 @@ import { Card,  CardContent, CardMedia, Grid, Typography } from '@mui/material';
 const Banner2 = () => {
 
   return (
-    <div >
+    <div data-aos="zoom-in-up" >
        <h2 className=' text-3xl font-semibold mt-4  -mb-5 dark:text-white text-center'>Inspiration </h2>
       <Typography className='text-white' variant="h4" gutterBottom>
         Give a Pet a Better Life!

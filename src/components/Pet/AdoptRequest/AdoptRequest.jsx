@@ -78,15 +78,15 @@ import { Helmet } from 'react-helmet';
 
         <div>
          <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table className='dark:bg-slate-800 dark:text-white' sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             
-            <TableCell className='border'>Name </TableCell>
-            <TableCell className='border' align="center">Email</TableCell>
-            <TableCell className='border' align="center">Phone</TableCell>
-            <TableCell className='border' align="center">Location</TableCell>
-            <TableCell className='border' align="center">Status</TableCell>
+            <TableCell className='border  dark:text-white'>Name </TableCell>
+            <TableCell className='border dark:text-white' align="center">Email</TableCell>
+            <TableCell className='border dark:text-white' align="center">Phone</TableCell>
+            <TableCell className='border dark:text-white' align="center">Location</TableCell>
+            <TableCell className='border dark:text-white' align="center">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody >
@@ -96,14 +96,14 @@ import { Helmet } from 'react-helmet';
               key={row?._id}
  
             >
-              <TableCell component="th" scope="row" width="20%">
+              <TableCell className='dark:text-white border-l' component="th" scope="row" width="20%">
                 {row.name}
               </TableCell>
              
-             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.email}</span></TableCell>
-             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.phone}</span></TableCell>
-             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.location}</span></TableCell>
-              <TableCell className='border' align="center" width="10%">
+             <TableCell className='border  dark:text-white' align="left" width="20%" ><span className='text-lg'>{row.email}</span></TableCell>
+             <TableCell className='border  dark:text-white' align="left" width="20%" ><span className='text-lg'>{row.phone}</span></TableCell>
+             <TableCell className='border dark:text-white ' align="left" width="20%" ><span className='text-lg'>{row.location}</span></TableCell>
+              <TableCell className='border dark:text-white' align="center" width="10%">
                 {
                   row.status ? "Accepted" : <><div className='flex gap-2 md:flex-row flex-col'><button onClick={()=> handleMakeAccept(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>Accpet</button> <button onClick={()=> handleReject(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-red-600 text-white hover:cursor-pointer '>Reject</button></div></>
                 }

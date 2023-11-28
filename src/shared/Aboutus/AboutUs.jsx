@@ -5,9 +5,9 @@ import { Grid, Paper, Typography } from '@mui/material';
 const AboutUs = () => {
 
   return (
-    <div className='my-4'>
+    <div data-aos="fade-left" className='my-4'>
         <Typography variant="h4"  align='center' gutterBottom>
-          <span >About Us</span>
+          <span className='dark:text-white'>About Us</span>
         </Typography>
         <Paper >
           <Typography variant="body1" paragraph>

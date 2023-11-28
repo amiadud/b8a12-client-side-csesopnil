@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div>
-            <section className="bg-white shadow dark:bg-gray-900">
+            <section className="bg-white shadow-md dark:shadow-md dark:shadow-red-50 dark:bg-slate-800 ">
     <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
             <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Ready to Adopt?</h1>
@@ -15,7 +15,7 @@ const Banner = () => {
             </Link>
         </div>
         <div className=" lg:mt-0 lg:col-span-5 lg:flex">
-            <img className='w-56 md:w-full' src="https://imgdb.net/storage/uploads/20621464cc3d6d945714cb74d6183eaa732307357a8c4690b310426ec244fce8.jpg" alt="mockup"/>
+            <img className='w-56 md:w-full dark:shadow-white dark:shadow-md' src="https://imgdb.net/storage/uploads/20621464cc3d6d945714cb74d6183eaa732307357a8c4690b310426ec244fce8.jpg" alt="mockup"/>
         </div>                
     </div>
 </section>

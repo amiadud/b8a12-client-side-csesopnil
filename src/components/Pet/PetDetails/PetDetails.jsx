@@ -103,29 +103,29 @@ const PetDetails = () => {
 
     return (
         <div >
-            <div className='text-center text-black w-20 cursor-pointer mb-5'>
-            <Link to={`/pet-category/${petCategory}`} className='inline-block rounded-full border-2 border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'>{petCategory}</Link>
+            <div className='text-center text-black w-20 cursor-pointer my-5 '>
+            <Link to={`/pet-category/${petCategory}`} className='inline-block rounded-full border-2 dark:text-white border-success px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-success transition duration-150 ease-in-out dark:border-white hover:border-success-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-success-600 focus:border-success-600 focus:text-success-600 focus:outline-none focus:ring-0 active:border-success-700 active:text-success-700 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10'>{petCategory}</Link>
             </div>
 
             <div className='space-y-4'>
-                <h2 className='text-4xl'>{petName}</h2>
-                <h2 className='flex items-center gap-1'><FaLocationDot className='text-orange-500' /> {petLocation}</h2>
+                <h2 className='text-4xl dark:text-white'>{petName}</h2>
+                <h2 className='flex items-center gap-1 dark:text-white'><FaLocationDot className='text-orange-500 dark:text-cyan-400' /> {petLocation}</h2>
             </div>
-            <h2 className='text-4xl my-4'>Details</h2>
+            <h2 className='text-4xl my-4 dark:text-white'>Details</h2>
             <div className='md:w-3/5  w-2/4 my-4'>
                 <img className='rounded' src={image} alt="" />
             </div>
-            <button onClick={() => setShowModal(true)} className='inline-block rounded bg-info px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#54b4d3] transition duration-150 ease-in-out hover:bg-info-600 hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:bg-info-600 focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:outline-none focus:ring-0 active:bg-info-700 active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(84,180,211,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)]'>Adopt</button>
+            <button onClick={ user ? () => setShowModal(true) : () => setShowModal(false) } className='inline-block rounded dark:bg-green-500 bg-info px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#54b4d3] transition duration-150 ease-in-out hover:bg-info-600 hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:bg-info-600 focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:outline-none focus:ring-0 active:bg-info-700 active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(84,180,211,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)]'>Adopt</button>
             <div className='my-4'>
             <h2 className='text-left mt-3 dark:text-white'> <span className='font-semibold '>Pet Age:</span> {petAge} Month   </h2>
             </div>
             <div className='my-4'>
-                <h2 className='font-semibold'>Short Description</h2>
-                {shortDescription}
+                <h2 className='font-semibold dark:text-white my-3 text-2xl'>Short Description</h2>
+                <span className='dark:text-white '>{shortDescription}</span>
             </div>
             <div>
-                <h2 className='font-semibold'>Long Description</h2>
-                {longDescription}
+                <h2 className='font-semibold my-3 dark:text-white text-2xl'>Long Description</h2>
+                <span className='dark:text-white '>{longDescription}</span>
             </div>
 {/* <!-- Modal --> */}
 <TEModal show={showModal} setShow={setShowModal} staticBackdrop>
@@ -206,7 +206,7 @@ const PetDetails = () => {
           <div className='flex justify-end'>
           <button
                   type="submit"
-                  className=" mt-4 dark:hover:bg-slate-100 dark:border dark:hover:text-black rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  className=" mt-4 dark:text-white dark:hover:bg-slate-100 dark:border dark:hover:text-black rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                 >
                   Request
                 </button>
@@ -217,7 +217,7 @@ const PetDetails = () => {
               <TERipple rippleColor="light">
                 <button
                   type="button"
-                  className="inline-block dark:hover:bg-slate-100 dark:border dark:hover:text-black dark:text-white  rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+                  className="inline-block dark:hover:bg-slate-100 dark:border dark:hover:text-black dark:text-black  rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
                   onClick={() => setShowModal(false)}
                 >
                   Close
@@ -229,7 +229,7 @@ const PetDetails = () => {
         </TEModalDialog>
       </TEModal>
 
-      <h1 className='text-5xl font-semibold my-8'>More Pets</h1>
+      <h1 className='text-5xl font-semibold my-8 dark:text-white'>More Pets</h1>
       <ul>
       <div className='grid grid-cols-2 md:grid-cols-3 mx-2 lg:grid-cols-3 gap-2 my-4 '>
             {

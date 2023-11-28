@@ -86,15 +86,15 @@ const AllUser = () => {
     return (
         <div>
          <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+      <Table className='dark:bg-slate-800 ' sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead >
           <TableRow>
-          <TableCell className='border'>Profile Image </TableCell>
+          <TableCell className='border dark:text-white'>Profile Image </TableCell>
             
-            <TableCell className='border'>Name </TableCell>
-            <TableCell className='border' align="center">Email</TableCell>
-            <TableCell className='border' align="center">Role</TableCell>
-            <TableCell className='border' align="center">Action</TableCell>
+            <TableCell className='border dark:text-white'>Name </TableCell>
+            <TableCell className='border dark:text-white' align="center">Email</TableCell>
+            <TableCell className='border dark:text-white' align="center">Role</TableCell>
+            <TableCell className='border dark:text-white' align="center">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody >
@@ -104,19 +104,19 @@ const AllUser = () => {
               key={row?._id}
  
             >
-              <TableCell className='border  ' align="left" width="20%" ><img  className=' w-16 rounded-full' src={row.photo} alt="" /></TableCell>
-              <TableCell component="th" scope="row" width="20%">
+              <TableCell className='border  dark:text-white' align="left" width="20%" ><img  className=' w-16 rounded-full' src={row.photo} alt="" /></TableCell>
+              <TableCell className='dark:text-white' component="th" scope="row" width="20%">
                 {row.name}
               </TableCell>
              
-             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.email}</span></TableCell>
-              <TableCell className='border' align="center" width="10%">
+             <TableCell className='border dark:text-white' align="left" width="20%" ><span className='text-lg'>{row.email}</span></TableCell>
+              <TableCell className='border dark:text-white' align="center" width="10%">
                 {
                   row.role ? "Admin" : <><button onClick={()=> handleMakeAdmin(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 btn my-3 hover:bg-gray-500 bg-blue-600 text-white hover:cursor-pointer '>Make Admin</button></>
                 }
 
               </TableCell>
-              <TableCell className='border' align="center" width="10%"><button onClick={()=> handleDeleteUser(row)}><MdDeleteForever className='text-3xl text-red-600' /></button></TableCell>
+              <TableCell className='border dark:text-white' align="center" width="10%"><button onClick={()=> handleDeleteUser(row)}><MdDeleteForever className='text-3xl text-red-600' /></button></TableCell>
             </TableRow>
           ))}
         </TableBody>

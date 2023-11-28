@@ -147,7 +147,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
     <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm font-light">
-          <thead className="border-b font-medium dark:border-neutral-500">
+          <thead className="border-b font-medium dark:text-white dark:border-neutral-500">
           {table.getHeaderGroups().map(headerGroup => (
                     <tr className='border' key={headerGroup?.id}>
                         {headerGroup.headers.map(header => 

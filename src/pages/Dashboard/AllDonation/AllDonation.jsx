@@ -92,33 +92,33 @@ import { useQuery } from '@tanstack/react-query';
 
 
 
-        <div>
+        <div className=' '>
          <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 650 }} aria-label="simple table" className='dark:bg-slate-800 '>
         <TableHead>
           <TableRow>
             
-            <TableCell className='border'>Pet Name </TableCell>
-            <TableCell className='border' align="center">Maximum Donation Amount</TableCell>
-            <TableCell className='border' align="center">Donation Progress</TableCell>
-            <TableCell className='border' align="center">Action</TableCell>
+            <TableCell className='border dark:text-white'>Pet Name </TableCell>
+            <TableCell className='border dark:text-white' align="center">Maximum Donation Amount</TableCell>
+            <TableCell className='border dark:text-white' align="center">Donation Progress</TableCell>
+            <TableCell className='border dark:text-white' align="center">Action</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody >
+        <TableBody className=''>
           {All_donate_Campaign.map((row) => (
 
             <TableRow
               key={row?._id}
             >
-              <TableCell component="th" scope="row" width="20%">
+              <TableCell className=' border-l dark:text-white' component="th" scope="row" width="20%">
                 {row.petName}
               </TableCell>
              
-             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>${row.maxDonation}</span></TableCell>
-             <TableCell className='border  ' align="left" width="20%" >
+             <TableCell className='border  dark:text-white' align="left" width="20%" ><span className='text-lg'>${row.maxDonation}</span></TableCell>
+             <TableCell className='border  dark:text-white' align="left" width="20%" >
              <ProgressBar completed={row.DonateAmount} maxCompleted={row.maxDonation} />
               </TableCell>
-              <TableCell className='border' align="center" width="10%">
+              <TableCell className='border dark:text-white' align="center" width="10%">
               <div className='flex gap-2'>
               <button onClick={()=> handlePauseDonation(row._id)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>{row.role =='pause' ? 'Pause ' : 'Make Pause'}</button>
               <Link className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-blue-600 text-white hover:cursor-pointer' to={`/dashboard/update-donation-campaign/${row?._id}`}>Edit</Link>

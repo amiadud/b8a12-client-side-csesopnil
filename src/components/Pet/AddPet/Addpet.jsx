@@ -129,11 +129,11 @@ const Addpet = () => {
     </Helmet>
     <form onSubmit={formik.handleSubmit} className='space-y-3 '>
         <div >
-        <label htmlFor="petName">Pet Name:</label>
+        <label className='dark:text-white' htmlFor="petName">Pet Name:</label>
         <input
           type="text"
           id="petName"
-          className='w-full'
+          className='w-full rounded dark:bg-slate-800 dark:text-white '
           name="petName"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -145,11 +145,11 @@ const Addpet = () => {
       </div>
 
       <div>
-        <label htmlFor="petAge">Pet Age:</label>
+        <label className='dark:text-white' htmlFor="petAge">Pet Age:</label>
         <input
           type="text"
           id="petAge"
-          className='rounded w-full'
+          className='w-full rounded dark:bg-slate-800 dark:text-white '
           name="petAge"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -162,11 +162,11 @@ const Addpet = () => {
 
 
        <div>
-        <label htmlFor="petLocation">Pet Location:</label>
+        <label className='dark:text-white' htmlFor="petLocation">Pet Location:</label>
         <input
           type="text"
           id="petLocation"
-          className='rounded w-full'
+          className='w-full rounded dark:bg-slate-800 dark:text-white '
           name="petLocation"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -179,10 +179,10 @@ const Addpet = () => {
 
       <div>
       <label>
-      <label htmlFor="petCategory">Pet Category:</label>
+      <label className='dark:text-white'  htmlFor="petCategory">Pet Category:</label>
         <Select
           options={options}
-          className='rounded w-full'
+          className='w-full rounded dark:bg-slate-800 dark:text-white '
           name="petCategory"
           value={formik.values.petCategory}
           onChange={(selectedOption) =>
@@ -197,10 +197,10 @@ const Addpet = () => {
       </div>
 
       <div>
-        <label htmlFor="petImage">Pet Image:</label>
+        <label className='dark:text-white' htmlFor="petImage">Pet Image:</label>
         <input
           type="file"
-          className='outline w-full rounded'
+          className='outline w-full dark:text-white dark:outline-slate-300 rounded'
           id="petImage"
           as="select"
           name="petImage"
@@ -213,25 +213,25 @@ const Addpet = () => {
       </div>
 
       <div>
-        <label htmlFor="longDescription">Long Description</label>
-        <textarea type="text" className=' w-full rounded' onChange={formik.handleChange} value={formik.values.longDescription} name="longDescription" id="longDescription" cols="30" rows="10"></textarea>
+        <label className='dark:text-white' htmlFor="longDescription">Long Description</label>
+        <textarea type="text" className='w-full rounded dark:bg-slate-800 dark:text-white ' onChange={formik.handleChange} value={formik.values.longDescription} name="longDescription" id="longDescription" cols="30" rows="10"></textarea>
         {formik.touched.longDescription && formik.errors.longDescription ? (
           <div className='text-red-500'>{formik.errors.longDescription}</div>
         ) : null}
       </div>
 
       <div>
-        <label htmlFor="shortDescription">Short Description:</label>
+        <label className='dark:text-white' htmlFor="shortDescription">Short Description:</label>
         <input
           type="text"
           id="shortDescription"
-          className=' w-full rounded'
+          className='w-full rounded dark:bg-slate-800 dark:text-white '
           name="shortDescription"
           value={formik.values.shortDescription}
           onChange={formik.handleChange}
         />
         {formik.touched.shortDescription && formik.errors.shortDescription ? (
-          <div className='text-red-500'>{formik.errors.shortDescription}</div>
+          <div className='text-red-500 '>{formik.errors.shortDescription}</div>
         ) : null}
       </div>
 

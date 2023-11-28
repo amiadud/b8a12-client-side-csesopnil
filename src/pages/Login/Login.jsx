@@ -67,7 +67,7 @@ const Login = () => {
           class="w-full"
           alt="Sample image" />
         <Typography component="h1" variant="h5">
-          Login
+          <span className='dark:text-white'>Login</span>
         </Typography>
         <Box
           component="form"
@@ -106,7 +106,7 @@ const Login = () => {
           </Button>
         </Box>
       </Box>
-      Don't have an account? <Link to={'/register'} className='font-semibold text-green-600'>Register</Link>
+      <span className='dark:text-white'>Don't have an account?</span> <Link to={'/register'} className='font-semibold text-green-600'>Register</Link>
       <SocialLogin/>
     </Container>
   );

@@ -57,7 +57,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "/pet-details/:id",
-                element:<PrivateRoutes><PetDetails/></PrivateRoutes>,
+                element:<PetDetails/>,
                 loader: ({params})=> fetch(`https://pet-adoption-server-rho.vercel.app/pet-details/${params.id}`)
                 
             },

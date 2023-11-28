@@ -21,7 +21,7 @@ const PetCategory = () => {
         <div className='grid grid-cols-1 '>
         <div className='my-5'>
             <div className='relative'>
-            <h2 className=' text-3xl font-semibold mt-4  dark:text-white text-center'>Pet Category </h2>
+            <h2 className=' text-3xl font-semibold mt-4 dark:bg-slate-800  dark:text-white text-center'>Pet Category </h2>
             </div>
         <div  className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:grid-cols-4 my-4 items-center">   
         {

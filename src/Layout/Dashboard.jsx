@@ -6,9 +6,10 @@ import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { FaUsers } from "react-icons/fa";
 import { FaRectangleList } from "react-icons/fa6";
-import { MdFormatListBulletedAdd } from "react-icons/md";
+import { MdFormatListBulletedAdd, MdLightMode, MdDarkMode } from "react-icons/md";
 import { FaClipboardList, FaDonate } from "react-icons/fa";
 import { FaSwatchbook } from "react-icons/fa6";
+import { useTheme } from '@emotion/react';
 
 
 const Dashboard = () => {

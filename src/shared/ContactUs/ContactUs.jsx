@@ -3,7 +3,7 @@ import { FormControl, FormHelperText, Input, InputLabel } from '@mui/material';
 
 const ContactUs = () => {
     return (
-        <div class=" w-full  flex  flex-row  flex-wrap  bg-gray-600  p-10  py-20  justify-center" >
+        <div data-aos="fade-right" class=" w-full  flex  flex-row  flex-wrap  bg-gray-600 dark:bg-slate-800 dark:border  p-10  py-20  justify-center" >
   <div class=" w-full  text-center">
     <div class=" text-3xl  text-center text-white  antialiased">Get Updates</div>
     <div class="text-xl   text-center  text-white antialiased">Find out about events and other news</div>

@@ -66,14 +66,14 @@ const MyDonation = () => {
     return (
         <div>
                    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table className='dark:bg-slate-800' sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             
-            <TableCell className='border' >Pet Image </TableCell>
-            <TableCell className='border' align="center">PetName</TableCell>
-            <TableCell className='border' align="center">Donated Amount</TableCell>
-            <TableCell className='border' align="center">Action</TableCell>
+            <TableCell className='border dark:text-white' >Pet Image </TableCell>
+            <TableCell className='border dark:text-white' align="center">PetName</TableCell>
+            <TableCell className='border dark:text-white' align="center">Donated Amount</TableCell>
+            <TableCell className='border dark:text-white' align="center">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody >
@@ -82,13 +82,13 @@ const MyDonation = () => {
             <TableRow
               key={row?._id}
             >
-              <TableCell component="th" scope="row" width="20%">
+              <TableCell className='dark:text-white' component="th" scope="row" width="20%">
                 <img className="rounded-md w-24 object-cover" src={row?.petImage} alt="" />
               </TableCell>
              
-              <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>{row.petName}</span></TableCell>
-             <TableCell className='border  ' align="left" width="20%" ><span className='text-lg'>${row.donateAmount}</span></TableCell>
-             <TableCell component="th" scope="row" width="5%">
+              <TableCell className='border dark:text-white ' align="left" width="20%" ><span className='text-lg'>{row.petName}</span></TableCell>
+             <TableCell className='border dark:text-white ' align="left" width="20%" ><span className='text-lg'>${row.donateAmount}</span></TableCell>
+             <TableCell className='dark:text-white' component="th" scope="row" width="5%">
              <button onClick={()=> handleDeleteDonate(row)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>Refund</button>
               </TableCell>
             </TableRow>

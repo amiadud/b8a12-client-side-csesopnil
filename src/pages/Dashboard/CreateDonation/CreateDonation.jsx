@@ -37,8 +37,8 @@ const CreateDonation = () => {
   const validationSchema = Yup.object({
     petName: Yup.string().required('Pet Name is required'),
     petImage: Yup.mixed().required('Pet Image is required'),
-    maxDonation: Yup.string().required('Required Max Donation is required'),
-    DonateAmount:Yup.string().required('Required Max Donation is required'),
+    maxDonation: Yup.string().required(' Max Donation is required'),
+    DonateAmount:Yup.string().required(' Max Donation is required'),
     lastDate: Yup.date(),
     longDescription: Yup.string().required('Long Description is required'),
     shortDescription: Yup.string().required('Short Description is required'),
@@ -113,11 +113,11 @@ const CreateDonation = () => {
   return (
     <form onSubmit={formik.handleSubmit} className='space-y-3 '>
          <div >
-        <label htmlFor="maxDonation">Pet Name:</label>
+        <label className='dark:text-white' htmlFor="maxDonation">Pet Name:</label>
         <input
           type="text"
           id="petName"
-          className='w-full'
+          className='w-full rounded dark:bg-slate-800 dark:text-white '
           name="petName"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -128,10 +128,10 @@ const CreateDonation = () => {
         ) : null}
       </div>
       <div>
-        <label htmlFor="petImage">Pet Image:</label>
+        <label className='dark:text-white' htmlFor="petImage">Pet Image:</label>
         <input
           type="file"
-          className='outline w-full rounded'
+          className='w-full rounded border dark:bg-slate-800 dark:text-white '
           id="petImage"
           as="select"
           name="petImage"
@@ -143,11 +143,11 @@ const CreateDonation = () => {
         ) : null}
       </div>
         <div >
-        <label htmlFor="maxDonation">Maximum Donation Amount:</label>
+        <label className='dark:text-white' htmlFor="maxDonation">Maximum Donation Amount:</label>
         <input
           type="text"
           id="maxDonation"
-          className='w-full'
+          className='w-full rounded border dark:bg-slate-800 dark:text-white '
           name="maxDonation"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -158,11 +158,11 @@ const CreateDonation = () => {
         ) : null}
       </div>
       <div >
-        <label htmlFor="maxDonation"> Donated Amount:</label>
+        <label className='dark:text-white' htmlFor="maxDonation"> Donated Amount:</label>
         <input
           type="text"
           id="DonateAmount"
-          className='w-full'
+          className='w-full rounded border dark:bg-slate-800 dark:text-white '
           name="DonateAmount"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -174,11 +174,11 @@ const CreateDonation = () => {
       </div>
 
       <div>
-        <label htmlFor="petAge">Last Date of Donation:</label>
+        <label className='dark:text-white' htmlFor="petAge">Last Date of Donation:</label>
         <input
           type="date"
           id="lastDate"
-          className='rounded w-full'
+          className='w-full rounded border dark:bg-slate-800 dark:text-white '
           name="lastDate"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -191,11 +191,11 @@ const CreateDonation = () => {
 
 
        <div>
-        <label htmlFor="petLocation">Short Description:</label>
+        <label className='dark:text-white' htmlFor="petLocation">Short Description:</label>
         <input
           type="text"
           id="shortDescription"
-          className='rounded w-full'
+          className='w-full rounded border dark:bg-slate-800 dark:text-white '
           name="shortDescription"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -208,8 +208,8 @@ const CreateDonation = () => {
 
 
       <div>
-        <label htmlFor="longDescription">Long Description</label>
-        <textarea type="text" className=' w-full rounded' onChange={formik.handleChange} value={formik.values.longDescription} name="longDescription" id="longDescription" cols="30" rows="10"></textarea>
+        <label className='dark:text-white' htmlFor="longDescription">Long Description</label>
+        <textarea type="text" className='w-full rounded border dark:bg-slate-800 dark:text-white ' onChange={formik.handleChange} value={formik.values.longDescription} name="longDescription" id="longDescription" cols="30" rows="10"></textarea>
         {formik.touched.longDescription && formik.errors.longDescription ? (
           <div className='text-red-500'>{formik.errors.longDescription}</div>
         ) : null}

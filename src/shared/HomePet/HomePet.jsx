@@ -23,7 +23,7 @@ const HomePet = () => {
 
     return (
         <>
-        <h2 className='text-center text-5xl my-4'>Cat</h2>
+        <h2 className='text-center text-5xl my-4 dark:text-white'>Cat</h2>
         <div className='grid grid-cols-2 md:grid-cols-3 mx-2 lg:grid-cols-3 gap-2 my-4 '>
         {
             petCats.map( pets => 
@@ -49,7 +49,7 @@ const HomePet = () => {
         }
                
     </div>
-    <h2 className='text-center text-5xl my-8 '>Birds</h2>
+    <h2 className='text-center text-5xl my-8 dark:text-white'>Birds</h2>
         <div className='grid grid-cols-2 md:grid-cols-3 mx-2 lg:grid-cols-3 gap-2 my-4 '>
         {
             birdsPets.map( pets => 
