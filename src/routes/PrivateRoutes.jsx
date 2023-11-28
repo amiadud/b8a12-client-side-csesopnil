@@ -1,10 +1,10 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Navigate, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import Swal from 'sweetalert2';
 
 const PrivateRoutes = ({children}) => {
 
@@ -25,8 +25,10 @@ const PrivateRoutes = ({children}) => {
 
 
     return ( 
-        toast.warning('Please login first!!'),
-        <ToastContainer></ToastContainer>,
+        Swal.fire({
+            icon: "warning",
+            title: "Please Login First!!",
+          }),
     <Navigate state={{from: location}} to="/login" replace></Navigate>
     
     );
