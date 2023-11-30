@@ -103,7 +103,7 @@ import useAuth from '../../../hooks/useAuth';
               <TableCell className='border dark:text-white' align="center" width="10%">
               <button onClick={()=> handlePauseDonation(row._id)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>{row.role =='pause' ? 'Pause ' : 'Make Pause'}</button>
               <Link className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-blue-600 text-white hover:cursor-pointer dark:text-white' to={`/dashboard/update-donation-campaign/${row?._id}`}>Edit</Link>
-              <button onClick={() => setShowModal(true) } onBlur={()=> setcollectid(row._id)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>Donators</button>
+              <button onClick={() => setShowModal(true) } onBlur={()=> setcollectid(row.DonateAmount)} className='py-2 px-2 rounded-2xl hover:text-white-600 my-3 hover:bg-gray-500 bg-green-600 text-white hover:cursor-pointer '>Donators</button>
 
               </TableCell>
             </TableRow>
@@ -166,16 +166,9 @@ import useAuth from '../../../hooks/useAuth';
             <input 
               type="text"
               name='donateAmount'
+              defaultValue={collectid}
               class=" min-h-[auto] w-full rounded border-1 bg-transparent px-3 py-[0.32rem] leading-[2.15] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 "
               placeholder="Enter Amount Number..." readOnly/>
-          </div>
-          <div className='flex justify-end'>
-          <button
-                  type="submit"
-                  className=" mt-4 dark:hover:bg-slate-100 dark:border dark:hover:text-black rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                >
-                  Added
-                </button>
           </div>
             </form>
             </TEModalBody>
