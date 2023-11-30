@@ -110,7 +110,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: "update-donation-campaign/:id",
-                element:<UpdateDonate/>,
+                element:<PrivateRoutes><UpdateDonate/></PrivateRoutes>,
                 loader: ({params}) => fetch(`https://pet-adoption-server-rho.vercel.app/campaign-detail/${params.id}`)
             },
             {

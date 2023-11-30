@@ -20,6 +20,23 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
     const axiosSecure = useAxiosSecure();
 
+    const handleAdopt = (user) => {
+      axiosSecure.patch(`/petlist/${user}`)
+      .then(res => {
+        console.log(res.data);
+        if(res.data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+      console.log(user);
+   
+    }
+
 
     const handleDelete = (item) =>{
       console.log(item);
@@ -54,6 +71,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
     }
 
   const [petData, refetch] = usePet()
+  console.log(petData);
     
     const [sorting, setSorting] = useState([])
     
@@ -73,7 +91,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
       }),
       columnHelper.accessor("petName", {
         cell: (info) => <span>{info.getValue()}</span>,
-        header: "petName",
+        header: "Pet Name",
       }),
       columnHelper.accessor("petCategory", {
         cell: (info) => <span>{info.getValue()}</span>,
@@ -91,13 +109,13 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
       }),
       columnHelper.accessor("adopted", {
         cell: (props) => {
-            return `${props.getValue() === true ? 'adopted' : "not adopted"  }`
+            return `${props.getValue() == true ? 'adopted' : "not adopted"  }`
         },
         header: "adopted status",
       }),
       columnHelper.accessor("_id", {
         cell: (props) => {
-          return <><div className="flex gap-3 md:flex-row flex-col "><Link className=" bg-green-500 hover:bg-green-600 rounded-lg px-3 py-3 " to={`/dashboard/update-pet/${props.getValue()}`}>Update</Link> <button className="bg-red-500 px-3 py-3 rounded-md hover:bg-red-600" onClick={()=> handleDelete(props.getValue())}>Delete</button> <button className="bg-blue-500 px-3 py-3 rounded-md hover:bg-blue-600" onClick={()=> handleDelete(props.getValue())}>Adopt</button> </div></>
+          return <><div className="flex gap-3 md:flex-row flex-col "><Link className=" bg-green-500 hover:bg-green-600 rounded-lg px-3 py-3 " to={`/dashboard/update-pet/${props.getValue()}`}>Update</Link> <button className="bg-red-500 px-3 py-3 rounded-md hover:bg-red-600" onClick={()=> handleDelete(props.getValue())}>Delete</button> <button className="bg-blue-500 px-3 py-3 rounded-md hover:bg-blue-600" onClick={()=> handleAdopt(props.getValue())}>Adopt</button> </div></>
       },
         header: "Action",
       }),
